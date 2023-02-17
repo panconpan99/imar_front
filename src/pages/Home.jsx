@@ -1,26 +1,23 @@
 import React from "react";
 import { useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
 import {
   Box,
+  Flex,
   FormControl,
   HStack,
   VStack,
   FormLabel,
   Checkbox,
   Button,
+  FormErrorMessage,
 } from "@chakra-ui/react";
-import {} from "@chakra-ui/react";
-import "leaflet/dist/leaflet.css";
-function Home() {
-  const position = [-41.494669, -72.985449];
-  const customIcon = new Icon({
-    iconUrl: "/icons8-select-24.png",
-    iconSize: [33, 33],
-  });
+import Map from "../components/Map";
+import { useNavigate } from "react-router-dom";
+const Home = () => {
+  const Navigate = useNavigate();
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const handleCheckbox1Change = (event) => {
     if (event.target.checked) {
@@ -39,9 +36,22 @@ function Home() {
       setIsChecked2(false);
     }
   };
+  const handleButtonClick =() =>{
+    if (isChecked1 || isChecked2) {
+      Navigate("/Board");
+    } else {
+      setIsFormValid(true);
+      alert('Debes seleccionar al menos un checkbox');
+    }
+  };
   return (
     <>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <HStack>
           <Box
             bg="#EFEFEF"
@@ -51,35 +61,42 @@ function Home() {
             h={"660px"}
             alignItems="center"
             align="center"
+            pt={"25px"}
           >
-            <div className="map" id="map">
-              <MapContainer center={position} zoom={16} scrollWheelZoom={true}>
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={position} icon={customIcon}>
-                  <Popup>???</Popup>
-                </Marker>
-              </MapContainer>
-            </div>
+            <Map />
           </Box>
-          <Box bg="#C8F9A1" color="black" w={"325px"} h={"660px"}>
-            <FormControl>
+          <Flex
+            bg="#C8F9A1"
+            color="black"
+            w={"325px"}
+            h={"660px"}
+            pt={"20px"}
+            pl={"9px"}
+          >
+            <FormControl isInvalid={isFormValid} >
               <FormLabel>Sensores disponibles</FormLabel>
               <VStack>
-                <Checkbox colorScheme="green" value="1" isChecked={isChecked1} onChange={handleCheckbox1Change}>
+                <Checkbox
+                  colorScheme="green"
+                  value="1"
+                  isChecked={isChecked1}
+                  onChange={handleCheckbox1Change}
+                >
                   SENSOR 1
                 </Checkbox>
-                <Checkbox colorScheme="green" value="2" isChecked={isChecked2} onChange={handleCheckbox2Change}>
+                <Checkbox
+                  colorScheme="green"
+                  value="2"
+                  isChecked={isChecked2}
+                  onChange={handleCheckbox2Change}
+                >
                   SENSOR 2 [CONSTRUYENDO]
                 </Checkbox>
+                <FormErrorMessage>Debes seleccionar al menos un checkbox</FormErrorMessage>
+                <Button size="lg" onClick={handleButtonClick}>Ingresar</Button>
               </VStack>
-              <Button size="lg">
-                Ingresar
-              </Button>
             </FormControl>
-          </Box>
+          </Flex>
         </HStack>
       </div>
     </>
