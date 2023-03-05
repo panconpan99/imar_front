@@ -37,11 +37,14 @@ const Home = () => {
     }
   };
   const handleButtonClick =() =>{
-    if (isChecked1 || isChecked2) {
+    if (isChecked1) {
       Navigate("/Board");
     } else {
-      setIsFormValid(true);
-      alert('Debes seleccionar al menos un checkbox');
+      if (isChecked2){
+        alert('Esta en construcción');
+      }else{
+        setIsFormValid(true);
+      }
     }
   };
   return (
@@ -66,7 +69,8 @@ const Home = () => {
             <Map />
           </Box>
           <Flex
-            bg="#C8F9A1"
+            borderRadius={"lg"}
+            bg="#ACD6FF"
             color="black"
             w={"325px"}
             h={"660px"}
@@ -75,9 +79,9 @@ const Home = () => {
           >
             <FormControl isInvalid={isFormValid} >
               <FormLabel>Sensores disponibles</FormLabel>
-              <VStack>
+              <VStack align ="left" p="20px">
                 <Checkbox
-                  colorScheme="green"
+                  colorScheme="blue"
                   value="1"
                   isChecked={isChecked1}
                   onChange={handleCheckbox1Change}
@@ -85,7 +89,7 @@ const Home = () => {
                   SENSOR 1
                 </Checkbox>
                 <Checkbox
-                  colorScheme="green"
+                  colorScheme="blue"
                   value="2"
                   isChecked={isChecked2}
                   onChange={handleCheckbox2Change}
