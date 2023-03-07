@@ -3,6 +3,8 @@ import { Box, Button, HStack, Portal } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import Dash from "../components/Dash";
+import GetData from "../components/GetData";
+
 import {
   Popover,
   PopoverTrigger,
@@ -16,35 +18,31 @@ import {
 
 const Board1 = () => {
   const Navigate = useNavigate();
-  //randomdata es solo de prueba
-  const getData = () => {
-    const data = [];
-    for (let i = 0; i < 7; i++) {
-      data.push(Math.floor(Math.random() * 50) + 10);
-    }
-    return data;
-  };
   //seteo de datos
-  const data1 = getData();
-  const data2 = getData();
-  const data3 = getData();
-  const data4 = getData();
+  const data1 = GetData();
+  const data2 = GetData();
+  const data3 = GetData();
+  const data4 = GetData();
+  const dashstyle = {
+    w: "500px",
+    h: "550px",
+    boxShadow: "lg",
+    rounded: "md",
+    p: "15px",
+    bg: "#FFFFFF",
+  };
 
   const HandleButtonClick = () => {
     Navigate("/");
+  };
+  const buttomclick = () => {
+    Navigate("/board2");
   };
   return (
     <>
       <Box p="20px">
         <HStack p={"20px"}>
-          <Box
-            w={"500px"}
-            h={"550px"}
-            boxShadow="xs"
-            rounded="md"
-            p={"15px"}
-            bg="#EFEFEF"
-          >
+          <Box sx={dashstyle}>
             <Popover>
               <PopoverTrigger>
                 <Button colorScheme="blue" variant={"ghost"} size="xs">
@@ -68,21 +66,17 @@ const Board1 = () => {
                     justifyContent="space-between"
                     pb={4}
                   >
-                    <Button colorScheme="blue"> Detalles </Button>
+                    <Button colorScheme="blue" onClick={buttomclick}>
+                      {" "}
+                      Detalles{" "}
+                    </Button>
                   </PopoverFooter>
                 </PopoverContent>
               </Portal>
             </Popover>
-            <Dash datos={data1} tipo="solubilidad del agua" />
+            <Dash datos={data1} tipo="solubilidad del agua" unit="hour"/>
           </Box>
-          <Box
-            w={"500px"}
-            h={"550px"}
-            boxShadow="xs"
-            rounded="md"
-            p={"15px"}
-            bg="#EFEFEF"
-          >
+          <Box sx={dashstyle}>
             <Popover>
               <PopoverTrigger>
                 <Button colorScheme="blue" variant={"ghost"} size="xs">
@@ -106,22 +100,18 @@ const Board1 = () => {
                     justifyContent="space-between"
                     pb={4}
                   >
-                    <Button colorScheme="blue"> Detalles </Button>
+                    <Button colorScheme="blue" onClick={buttomclick}>
+                      {" "}
+                      Detalles{" "}
+                    </Button>
                   </PopoverFooter>
                 </PopoverContent>
               </Portal>
             </Popover>
-            <Dash datos={data2} tipo="marejada" />
+            <Dash datos={data2} tipo="marejada" unit="hour" />
           </Box>
 
-          <Box
-            w={"500px"}
-            h={"550px"}
-            boxShadow="xs"
-            rounded="md"
-            p={"15px"}
-            bg="#EFEFEF"
-          >
+          <Box sx={dashstyle}>
             <Popover>
               <PopoverTrigger>
                 <Button colorScheme="blue" variant={"ghost"} size="xs">
@@ -145,22 +135,18 @@ const Board1 = () => {
                     justifyContent="space-between"
                     pb={4}
                   >
-                    <Button colorScheme="blue"> Detalles </Button>
+                    <Button colorScheme="blue" onClick={buttomclick}>
+                      {" "}
+                      Detalles{" "}
+                    </Button>
                   </PopoverFooter>
                 </PopoverContent>
               </Portal>
             </Popover>
-            <Dash datos={data3} tipo="fosfato" />
+            <Dash datos={data3} tipo="fosfato" unit="hour"/>
           </Box>
 
-          <Box
-            w={"500px"}
-            h={"550px"}
-            boxShadow="xs"
-            rounded="md"
-            p={"15px"}
-            bg="#EFEFEF"
-          >
+          <Box sx={dashstyle}>
             <Popover>
               <PopoverTrigger>
                 <Button colorScheme="blue" variant={"ghost"} size="xs">
@@ -184,17 +170,22 @@ const Board1 = () => {
                     justifyContent="space-between"
                     pb={4}
                   >
-                    <Button colorScheme="blue"> Detalles </Button>
+                    <Button colorScheme="blue" onClick={buttomclick}>
+                      {" "}
+                      Detalles{" "}
+                    </Button>
                   </PopoverFooter>
                 </PopoverContent>
               </Portal>
             </Popover>
-            <Dash datos={data4} tipo="temperatura" />
+            <Dash datos={data4} tipo="temperatura" unit="hour"/>
           </Box>
         </HStack>
       </Box>
       <Box>
-        <Button onClick={HandleButtonClick}>volver</Button>
+        <Button p={"20px"} colorScheme="blue" onClick={HandleButtonClick}>
+          Volver
+        </Button>
       </Box>
     </>
   );

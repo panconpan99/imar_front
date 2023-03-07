@@ -1,6 +1,8 @@
-.App {
-  text-align: center;
-  background-color: rgb(221, 221, 221);
+.chakra-ui-light{
+  background-color: rgb(232, 232, 232);
+}
+.container {
+  padding:50px;
 }
 .leaflet-container {
   width: 550px;

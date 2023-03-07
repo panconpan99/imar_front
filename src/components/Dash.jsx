@@ -3,7 +3,7 @@ import Chart from "chart.js/auto";
 import { useRef, useState, useEffect } from "react";
 import 'chartjs-adapter-date-fns';
 
-const Dash = ({ datos, tipo }) => {
+const Dash = ({ datos, tipo ,unit}) => {
   const canvasRef = useRef(null);
   const [ChartData, setChartData] = useState(null);
 
@@ -35,7 +35,7 @@ const Dash = ({ datos, tipo }) => {
           x: {
             type:'time',
             time:{
-              unit:'hour'
+              unit:unit,
             }
           },
           y: {
@@ -52,7 +52,7 @@ const Dash = ({ datos, tipo }) => {
       chart.destroy();
     };
   }, [datos,tipo]);
-  
+
   return <canvas ref={canvasRef} width="25" height="25"></canvas>;
 };
 export default Dash;

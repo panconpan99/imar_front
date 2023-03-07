@@ -11,6 +11,7 @@ import {
   Button,
   FormErrorMessage,
 } from "@chakra-ui/react";
+
 import Map from "../components/Map";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
@@ -41,7 +42,7 @@ const Home = () => {
       Navigate("/Board");
     } else {
       if (isChecked2){
-        alert('Esta en construcción');
+        alert('Sensor no disponible');
       }else{
         setIsFormValid(true);
       }
@@ -57,9 +58,10 @@ const Home = () => {
       >
         <HStack>
           <Box
-            bg="#EFEFEF"
+            bg="#FFFFFF"
             borderRadius={"lg"}
             color="black"
+            boxShadow="lg"
             w={"625px"}
             h={"660px"}
             alignItems="center"
@@ -72,6 +74,7 @@ const Home = () => {
             borderRadius={"lg"}
             bg="#ACD6FF"
             color="black"
+            boxShadow="lg"
             w={"325px"}
             h={"660px"}
             pt={"20px"}
