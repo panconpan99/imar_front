@@ -24,8 +24,8 @@ const Board1 = () => {
   const data3 = GetData();
   const data4 = GetData();
   const dashstyle = {
-    w: "500px",
-    h: "550px",
+    w: "510px",
+    h: "500px",
     boxShadow: "lg",
     rounded: "md",
     p: "15px",
@@ -182,7 +182,7 @@ const Board1 = () => {
           </Box>
         </HStack>
       </Box>
-      <Box>
+      <Box pl={10}>
         <Button p={"20px"} colorScheme="blue" onClick={HandleButtonClick}>
           Volver
         </Button>

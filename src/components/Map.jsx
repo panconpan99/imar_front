@@ -9,7 +9,7 @@ const Map = () => {
     iconSize: [30, 30],
   });
   return (
-    <div className="map" id="map">
+    <div>
       <MapContainer center={position} zoom={16} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

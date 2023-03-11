@@ -51,7 +51,7 @@ const Dash = ({ datos, tipo ,unit}) => {
     return () => {
       chart.destroy();
     };
-  }, [datos,tipo]);
+  }, [datos,tipo,unit]);
 
   return <canvas ref={canvasRef} width="25" height="25"></canvas>;
 };

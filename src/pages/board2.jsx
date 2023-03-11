@@ -19,41 +19,11 @@ import Dash from "../components/Dash";
 import GetData from "../components/GetData";
 
 const Board2 = () => {
-    
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
-
-  const handleCheckbox1Change = (event) => {
-    if (event.target.checked) {
-      setIsChecked1(true);
-      setIsChecked2(false);
-      setIsChecked3(false);
-    } else {
-      setIsChecked1(false);
-    }
-  };
-  const handleCheckbox2Change = (event) => {
-    if (event.target.checked) {
-      setIsChecked2(true);
-      setIsChecked1(false);
-      setIsChecked3(false);
-    } else {
-      setIsChecked2(false);
-    }
-  };
-  const handleCheckbox3Change = (event) => {
-    if (event.target.checked) {
-      setIsChecked3(true);
-      setIsChecked2(false);
-      setIsChecked1(false);
-    } else {
-      setIsChecked3(false);
-    }
-  };
   const unit = "hour";
   const datos = GetData();
   const Navigate = useNavigate();
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
   const HandleButtonClick = () => {
     Navigate("/board");
   };
@@ -64,9 +34,25 @@ const Board2 = () => {
     rounded: "md",
     bg: "#FFFFFF",
   };
+  const handleCheckbox1Change = (event) => {
+    if (event.target.checked) {
+      setIsChecked1(true);
+      setIsChecked2(false);
+    } else {
+      setIsChecked1(false);
+    }
+  };
+  const handleCheckbox2Change = (event) => {
+    if (event.target.checked) {
+      setIsChecked2(true);
+      setIsChecked1(false);
+    } else {
+      setIsChecked2(false);
+    }
+  };
   return (
     <>
-      <Flex>
+      <Flex p={10}>
         <HStack>
           <Box sx={dashstyle} w="500px">
             <Dash datos={datos} tipo={"Ejemplo"} unit={unit} />
@@ -112,30 +98,25 @@ const Board2 = () => {
                     >
                       Dia
                     </Checkbox>
-                    <Checkbox
-                      pr={6}
-                      value={"month"}
-                      isChecked={isChecked3}
-                      onChange={handleCheckbox3Change}
-                    >
+                    <Checkbox pr={6} value={"month"}>
                       Mes
                     </Checkbox>
                   </CheckboxGroup>
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
-            <Box pt={"10px"}>
+            <HStack pt={"10px"} >
               <Button colorScheme={"green"} variant="solid">
                 Descargar archivo .XLSX
               </Button>
               <Button colorScheme={"green"} variant="outline">
                 Descargar archivo .CSV
               </Button>
-            </Box>
+            </HStack>
           </Box>
         </HStack>
       </Flex>
-      <Box p="10px">
+      <Box p="10px" pl={10}>
         <Button colorScheme="blue" onClick={HandleButtonClick}>
           Atras
         </Button>
