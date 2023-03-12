@@ -40,7 +40,7 @@ const Home = () => {
       Navigate("/Board");
     } else {
       if (isChecked2) {
-        alert("Sensor no disponible");
+        alert("Baliza no disponible");
       } else {
         setIsFormValid(true);
       }
@@ -63,21 +63,21 @@ const Home = () => {
           top={40}
         >
           <FormControl isInvalid={isFormValid}>
-            <FormLabel>Sensores disponibles</FormLabel>
+            <FormLabel>Balizas disponibles</FormLabel>
             <VStack align="left" p="20px">
               <Checkbox
                 colorScheme="blue"
                 isChecked={isChecked1}
                 onChange={handleCheckbox1Change}
               >
-                SENSOR 1
+                Baliza 1
               </Checkbox>
               <Checkbox
                 colorScheme="blue"
                 isChecked={isChecked2}
                 onChange={handleCheckbox2Change}
               >
-                SENSOR 2 [CONSTRUYENDO]
+                Baliza 2 [Construyendo]
               </Checkbox>
               <FormErrorMessage>
                 Debes seleccionar al menos un checkbox

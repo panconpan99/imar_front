@@ -1,11 +1,12 @@
 import "leaflet/dist/leaflet.css";
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
+import L from 'leaflet';
+
 const Map = () => {
   const position = [-41.49654, -72.985169];
-  const customIcon = new Icon({
-    iconUrl: "../../public/Basic_green_dot.png",
+  const customIcon = new L.Icon({
+    iconUrl: require("../images/Basic_green_dot.png"),
     iconSize: [30, 30],
   });
   return (
