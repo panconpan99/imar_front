@@ -8,7 +8,7 @@ const Navbar = () => {
       <nav className="navbar">
         <Box color="black" bg="white" h={"55px"} p={1}>
           <Flex direction={"row"} p={1}>
-            navbar_test_logo.jpg
+            <Link to={"/"}>navbar_test_logo.jpg</Link>
             <Spacer />
             <Box p={"6px"} pt={"8px"} pr={"10px"}>
               <Link to={"/about"}>Acerca de</Link>
