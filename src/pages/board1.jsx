@@ -25,7 +25,7 @@ const Board1 = () => {
   const data4 = GetData();
   const dashstyle = {
     w: "510px",
-    h: "500px",
+    h: "550px",
     boxShadow: "lg",
     rounded: "md",
     p: "15px",
@@ -38,6 +38,10 @@ const Board1 = () => {
   const buttomclick = () => {
     Navigate("/board2");
   };
+  //to do list
+  //buscar una manera de elegir una alerta
+  //actual numero en pantalla (done)
+  //limites
   return (
     <>
       <Box p="20px">
@@ -74,7 +78,8 @@ const Board1 = () => {
                 </PopoverContent>
               </Portal>
             </Popover>
-            <Dash datos={data1} tipo="solubilidad del agua" unit="hour"/>
+            <Dash datos={data1} tipo="solubilidad del agua" unit="hour" />
+            <Box p="20px">Registro actual : {data1.slice(-1)}</Box>
           </Box>
           <Box sx={dashstyle}>
             <Popover>
@@ -109,6 +114,7 @@ const Board1 = () => {
               </Portal>
             </Popover>
             <Dash datos={data2} tipo="marejada" unit="hour" />
+            <Box p={"20px"}>Registro actual : {data2.slice(-1)}</Box>
           </Box>
 
           <Box sx={dashstyle}>
@@ -143,7 +149,8 @@ const Board1 = () => {
                 </PopoverContent>
               </Portal>
             </Popover>
-            <Dash datos={data3} tipo="fosfato" unit="hour"/>
+            <Dash datos={data3} tipo="fosfato" unit="hour" />
+            <Box p={"20px"}>Registro actual : {data3.slice(-1)}</Box>
           </Box>
 
           <Box sx={dashstyle}>
@@ -178,7 +185,8 @@ const Board1 = () => {
                 </PopoverContent>
               </Portal>
             </Popover>
-            <Dash datos={data4} tipo="temperatura" unit="hour"/>
+            <Dash datos={data4} tipo="temperatura" unit="hour" />
+            <Box p={"20px"}>Registro actual : {data4.slice(-1)}</Box>
           </Box>
         </HStack>
       </Box>

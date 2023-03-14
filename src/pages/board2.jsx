@@ -1,29 +1,28 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Box, Button, HStack, Flex, Text } from "@chakra-ui/react";
 import {
-  Box,
-  Button,
-  HStack,
-  Flex,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-  Text,
-  Checkbox,
-  CheckboxGroup,
+  RangeSlider,
+  RangeSliderTrack,
+  RangeSliderFilledTrack,
+  RangeSliderThumb,
 } from "@chakra-ui/react";
 import Dash from "../components/Dash";
 import GetData from "../components/GetData";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+//to do list:
+//eliminar el acordeon (done)
+//hacer mas interactivo el board
+//buscar una manera de elegir un dia y mes
+//descargas
 const Board2 = () => {
   const unit = "hour";
   const datos = GetData();
   const Navigate = useNavigate();
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const [EndDate, setEndDate] = useState(new Date());
   const HandleButtonClick = () => {
     Navigate("/board");
   };
@@ -33,22 +32,6 @@ const Board2 = () => {
     boxShadow: "lg",
     rounded: "md",
     bg: "#FFFFFF",
-  };
-  const handleCheckbox1Change = (event) => {
-    if (event.target.checked) {
-      setIsChecked1(true);
-      setIsChecked2(false);
-    } else {
-      setIsChecked1(false);
-    }
-  };
-  const handleCheckbox2Change = (event) => {
-    if (event.target.checked) {
-      setIsChecked2(true);
-      setIsChecked1(false);
-    } else {
-      setIsChecked2(false);
-    }
   };
   return (
     <>
@@ -67,45 +50,32 @@ const Board2 = () => {
                 eiusmod tempor incididunt ut labore et dolore.
               </Text>
             </Box>
-            <Box>
-              <Text>Opciones</Text>
+            <Box p={"10px"}>
+              Hora: 
+              <RangeSlider aria-label={['min','max']} min={0} max={23} step={1} defaultValue={[0, 6]} >
+                <RangeSliderTrack>
+                  <RangeSliderFilledTrack/>
+                </RangeSliderTrack>
+                <RangeSliderThumb index={0}/>
+                <RangeSliderThumb index={1}/>
+              </RangeSlider>
             </Box>
-            <Accordion allowMultiple>
-              <AccordionItem>
-                <h2>
-                  <AccordionButton>
-                    <Box as="span" flex={1} textAlign="left">
-                      filtros
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                  <CheckboxGroup colorScheme={"blue"}>
-                    <Checkbox
-                      pr={6}
-                      value={"hour"}
-                      isChecked={isChecked1}
-                      onChange={handleCheckbox1Change}
-                    >
-                      Hora
-                    </Checkbox>
-                    <Checkbox
-                      pr={6}
-                      value={"day"}
-                      isChecked={isChecked2}
-                      onChange={handleCheckbox2Change}
-                    >
-                      Dia
-                    </Checkbox>
-                    <Checkbox pr={6} value={"month"}>
-                      Mes
-                    </Checkbox>
-                  </CheckboxGroup>
-                </AccordionPanel>
-              </AccordionItem>
-            </Accordion>
-            <HStack pt={"10px"} >
+            <Box p={"10px"}>
+              Fecha:
+              <HStack p="20px" spacing={"10px"}>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  placeholder="inicio"
+                />
+                <DatePicker
+                  selected={EndDate}
+                  onChange={(date) => setEndDate(date)}
+                  placeholder="final"
+                />
+              </HStack>
+            </Box>
+            <HStack pt={"10px"}>
               <Button colorScheme={"green"} variant="solid">
                 Descargar archivo .XLSX
               </Button>

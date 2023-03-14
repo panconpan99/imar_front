@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Image } from "@chakra-ui/react";
 const About = () => {
-  const imagelogo = "../images/Logo.png";
+  const imagelogo = "../images/logo.png";
   const dashstyle = {
     justifycontent: "center",
     w: "70%",

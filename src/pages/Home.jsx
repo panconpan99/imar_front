@@ -51,6 +51,7 @@ const Home = () => {
       <div>
         <Box
           p={"5px"}
+          pl={"10px"}
           pos={"absolute"}
           borderRadius={"md"}
           bg="#FFFFFF"
