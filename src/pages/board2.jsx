@@ -1,31 +1,26 @@
 import React from "react";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, HStack, Flex, Text } from "@chakra-ui/react";
-import {
-  RangeSlider,
-  RangeSliderTrack,
-  RangeSliderFilledTrack,
-  RangeSliderThumb,
-} from "@chakra-ui/react";
 import Dash from "../components/Dash";
 import GetData from "../components/GetData";
-import DatePicker from "react-datepicker";
+import Selection from "../components/Selection";
+
 import "react-datepicker/dist/react-datepicker.css";
 //to do list:
 //eliminar el acordeon (done)
 //hacer mas interactivo el board
-//buscar una manera de elegir un dia y mes
+//buscar una manera de elegir un dia y mes (done)
+//hacer que la hora muestre la hora
 //descargas
 const Board2 = () => {
   const unit = "hour";
   const datos = GetData();
   const Navigate = useNavigate();
-  const [startDate, setStartDate] = useState(new Date());
-  const [EndDate, setEndDate] = useState(new Date());
+
   const HandleButtonClick = () => {
     Navigate("/board");
   };
+
   const dashstyle = {
     p: "20px",
     h: "550px",
@@ -33,6 +28,7 @@ const Board2 = () => {
     rounded: "md",
     bg: "#FFFFFF",
   };
+
   return (
     <>
       <Flex p={10}>
@@ -40,7 +36,7 @@ const Board2 = () => {
           <Box sx={dashstyle} w="500px">
             <Dash datos={datos} tipo={"Ejemplo"} unit={unit} />
           </Box>
-          <Box sx={dashstyle} w={"1000px"}>
+          <Box sx={dashstyle} w={"62rem"}>
             <Box>
               <Text fontSize={30}>Ejemplo</Text>
             </Box>
@@ -50,32 +46,14 @@ const Board2 = () => {
                 eiusmod tempor incididunt ut labore et dolore.
               </Text>
             </Box>
-            <Box p={"10px"}>
-              Hora: 
-              <RangeSlider aria-label={['min','max']} min={0} max={23} step={1} defaultValue={[0, 6]} >
-                <RangeSliderTrack>
-                  <RangeSliderFilledTrack/>
-                </RangeSliderTrack>
-                <RangeSliderThumb index={0}/>
-                <RangeSliderThumb index={1}/>
-              </RangeSlider>
+            <Box>
+              filtros
             </Box>
-            <Box p={"10px"}>
-              Fecha:
-              <HStack p="20px" spacing={"10px"}>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  placeholder="inicio"
-                />
-                <DatePicker
-                  selected={EndDate}
-                  onChange={(date) => setEndDate(date)}
-                  placeholder="final"
-                />
-              </HStack>
+            <Box>
+              <Selection/>
             </Box>
-            <HStack pt={"10px"}>
+
+            <HStack position={"fixed"} top={"36em"} left={"67em"}>
               <Button colorScheme={"green"} variant="solid">
                 Descargar archivo .XLSX
               </Button>

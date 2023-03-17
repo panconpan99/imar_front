@@ -7,8 +7,8 @@ const Dash = ({ datos, tipo ,unit}) => {
   const canvasRef = useRef(null);
   const [ChartData, setChartData] = useState(null);
 
-  useEffect(() => {
-    const chart = new Chart(canvasRef.current, {
+  useEffect((ChartData) => {
+    ChartData = new Chart(canvasRef.current, {
       type: "line",
       data: {
         labels: [
@@ -47,9 +47,9 @@ const Dash = ({ datos, tipo ,unit}) => {
       },
     });
 
-    setChartData(chart);
+    setChartData(ChartData);
     return () => {
-      chart.destroy();
+      ChartData.destroy();
     };
   }, [datos,tipo,unit]);
 

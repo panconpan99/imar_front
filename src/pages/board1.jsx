@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button, HStack, Portal } from "@chakra-ui/react";
-import { InfoIcon } from "@chakra-ui/icons";
+import { InfoIcon, CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import Dash from "../components/Dash";
 import GetData from "../components/GetData";
@@ -79,7 +79,12 @@ const Board1 = () => {
               </Portal>
             </Popover>
             <Dash datos={data1} tipo="solubilidad del agua" unit="hour" />
-            <Box p="20px">Registro actual : {data1.slice(-1)}</Box>
+            <HStack>
+              <Box p="20px">Registro actual : {data1.slice(-1)}</Box>
+              <Box p="20px" pt={"25px"}>
+                Estado: {data1.slice(-1) < 50 ? <CheckIcon color={"green"} boxSize="2em"/> : <CloseIcon color={"red"} boxSize="2em"/>}
+              </Box>
+            </HStack>
           </Box>
           <Box sx={dashstyle}>
             <Popover>
@@ -114,7 +119,12 @@ const Board1 = () => {
               </Portal>
             </Popover>
             <Dash datos={data2} tipo="marejada" unit="hour" />
-            <Box p={"20px"}>Registro actual : {data2.slice(-1)}</Box>
+            <HStack>
+              <Box p="20px">Registro actual : {data2.slice(-1)}</Box>
+              <Box p="20px" pt={"25px"}>
+                Estado: {data2.slice(-1) < 50 ?<CheckIcon color={"green"} boxSize="2em"/> : <CloseIcon color={"red"} boxSize="2em"/>}
+              </Box>
+            </HStack>
           </Box>
 
           <Box sx={dashstyle}>
@@ -150,7 +160,12 @@ const Board1 = () => {
               </Portal>
             </Popover>
             <Dash datos={data3} tipo="fosfato" unit="hour" />
-            <Box p={"20px"}>Registro actual : {data3.slice(-1)}</Box>
+            <HStack>
+              <Box p="20px">Registro actual : {data3.slice(-1)}</Box>
+              <Box p="20px" pt={"25px"}>
+                Estado: {data3.slice(-1) < 50 ? <CheckIcon color={"green"} boxSize="2em"/> : <CloseIcon color={"red"} boxSize="2em"/>}
+              </Box>
+            </HStack>
           </Box>
 
           <Box sx={dashstyle}>
@@ -186,7 +201,12 @@ const Board1 = () => {
               </Portal>
             </Popover>
             <Dash datos={data4} tipo="temperatura" unit="hour" />
-            <Box p={"20px"}>Registro actual : {data4.slice(-1)}</Box>
+            <HStack>
+              <Box p="20px">Registro actual : {data4.slice(-1)}</Box>
+              <Box p="20px" pt={"25px"}>
+                Estado: {data4.slice(-1) < 50 ? <CheckIcon color={"green"} boxSize="2em"/> : <CloseIcon color={"red"} boxSize="2em"/>}
+              </Box>
+            </HStack>
           </Box>
         </HStack>
       </Box>
