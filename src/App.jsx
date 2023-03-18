@@ -6,6 +6,7 @@ import Register from "./pages/register";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import About from "./pages/about";
+import Footer from "./components/Footer"
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/about" element={<About/>} />
         </Routes>
       </div>
+      <Footer/>
     </>
   );
 }

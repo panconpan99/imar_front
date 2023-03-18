@@ -16,10 +16,11 @@ const Selection = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [EndDate, setEndDate] = useState(new Date());
   const [selectedOption, setSelectedOption] = useState(null);
-
+  const [values, setValues] = useState([0, 6]);
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
+
   const statesselector = (selectedOption) => {
     let page1 = "";
     let page2 = "";
@@ -35,47 +36,53 @@ const Selection = () => {
           <RangeSlider
             defaultValue={[0, 6]}
             min={0}
-            max={23}
+            max={24}
             step={1}
-            onChangeEnd={(value) => console.log(value)}
+            values={values}
+            minStepsBetweenThumbs={1}
+            onChange={(newvalue) => setValues(newvalue)}
           >
             <RangeSliderTrack>
               <RangeSliderFilledTrack />
             </RangeSliderTrack>
-            <RangeSliderThumb boxSize={6} index={0} />
-            <RangeSliderThumb boxSize={6} index={1} />
+            <RangeSliderThumb boxSize={6} key={0} index={0} children={values[0]}/>
+            <RangeSliderThumb boxSize={6} key={1} index={1} children={values[1]} />
           </RangeSlider>
         </Box>
       );
-    }if (selectedOption === "Custom") {
+    }
+    if (selectedOption === "Custom") {
       page2 = (
         <Box>
           Fecha:
           <HStack p="20px" spacing={"5px"}>
             <Box>
               Fecha inicio
-            <DatePicker
-              selected={startDate}
-              onChange={(startDate) => setStartDate(startDate)}
-              placeholder="inicio"
-            />
+              <DatePicker
+                selected={startDate}
+                onChange={(startDate) => setStartDate(startDate)}
+                placeholder="inicio"
+              />
             </Box>
             <Box>
               Fecha final
-            <DatePicker
-              selected={EndDate}
-              onChange={(EndDate) => setEndDate(EndDate)}
-              placeholder="final"
-            />
+              <DatePicker
+                selected={EndDate}
+                onChange={(EndDate) => setEndDate(EndDate)}
+                placeholder="final"
+              />
             </Box>
           </HStack>
         </Box>
       );
     }
-    if (selectedOption ==="week" || selectedOption ==="month" || selectedOption ==="year" || selectedOption === null) {
-      page3 =(
-        <Box pb={"150px"}></Box>
-      );
+    if (
+      selectedOption === "week" ||
+      selectedOption === "month" ||
+      selectedOption === "year" ||
+      selectedOption === null
+    ) {
+      page3 = <Box pb={"150px"}></Box>;
     }
     const page = [page1, page2, page3];
     return page;
@@ -85,7 +92,7 @@ const Selection = () => {
       <Box>
         <Select
           onChange={handleOptionChange}
-          placeholder="seleccione un filtro"
+          placeholder="Seleccione un filtro"
         >
           <option value="today">Hoy</option>
           <option value="yesterday">Ayer</option>

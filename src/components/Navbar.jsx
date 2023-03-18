@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { Box, Button, Spacer, Flex, HStack } from "@chakra-ui/react";
+
 const Navbar = () => {
   return (
     <>

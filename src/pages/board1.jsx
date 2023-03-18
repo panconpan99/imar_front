@@ -45,7 +45,7 @@ const Board1 = () => {
   return (
     <>
       <Box p="20px">
-        <HStack p={"20px"}>
+        <HStack p={"40px"} pt={"50px"}>
           <Box sx={dashstyle}>
             <Popover>
               <PopoverTrigger>

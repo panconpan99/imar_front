@@ -31,7 +31,7 @@ const Board2 = () => {
 
   return (
     <>
-      <Flex p={10}>
+      <Flex p={10} pt={"90px"}>
         <HStack>
           <Box sx={dashstyle} w="500px">
             <Dash datos={datos} tipo={"Ejemplo"} unit={unit} />
