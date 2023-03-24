@@ -6,18 +6,16 @@ import Historic from "../components/Historic";
 import Actual from "../components/Actual";
 
 //seteo de datos
-const data1 = GetData();
-const data2 = GetData();
-const data3 = GetData();
-const data4 = GetData();
-
+const data1 = {data : GetData(),label:"solubilidad del agua"};
+const data2 ={data : GetData(),label:"marejada"};
+const data3 = {data : GetData(),label:"fosfato"};
+const data4 = {data : GetData(),label:"temperatura"};
+const alldata = [data1, data2, data3, data4];
 
 const Board1 = () => {
   const Navigate = useNavigate();
   
- 
-  const alldata = [data1, data2, data3, data4];
-  const [selectedbuttons, setselectedbuttons] = useState("2");
+  const [selectedbuttons, setselectedbuttons] = useState("1");
   const HandleButtonClick = () => {
     Navigate("/");
   };
@@ -32,7 +30,7 @@ const Board1 = () => {
         <HStack>
           <ButtonGroup>
             <Button
-              isdisabled={selectedbuttons === "1"}
+              isDisabled={selectedbuttons === "1"}
               onClick={() => {
                 setselectedbuttons("1");
               }}
@@ -40,7 +38,7 @@ const Board1 = () => {
               Actual
             </Button>
             <Button
-              isdisabled={selectedbuttons === "2"}
+              isDisabled={selectedbuttons === "2"}
               onClick={() => {
                 setselectedbuttons("2");
               }}
@@ -51,7 +49,7 @@ const Board1 = () => {
         </HStack>
       </Box>
       <Box p="5px">
-        {selectedbuttons === "1" && <Actual />}
+        {selectedbuttons === "1" && <Actual listdata={alldata}/>}
         {selectedbuttons === "2" && <Historic listdata={alldata} />}
       </Box>
       <Box pl={9}>

@@ -34,7 +34,7 @@ const Historic = ({ listdata }) => {
     <HStack p={"20px"} pt={"30px"}>
         {listdata.map((data) => {
           return (
-            <Box key={data} sx={dashstyle}>
+            <Box key={data.data} sx={dashstyle}>
               <Popover>
                 <PopoverTrigger>
                   <Button colorScheme="blue" variant={"ghost"} size="xs">
@@ -65,11 +65,11 @@ const Historic = ({ listdata }) => {
                   </PopoverContent>
                 </Portal>
               </Popover>
-              <Dash datos={data} tipo="solubilidad del agua" unit="hour" />
+              <Dash datos={data.data} tipo={data.label} unit="hour" />
               <HStack>
                 <Box p="20px" pt={"25px"}>
                   Estado:
-                  {data.slice(-1) < 50 ? (
+                  {data.data.slice(-1) < 50 ? (
                     <CheckIcon color={"green"} boxSize="2em" />
                   ) : (
                     <CloseIcon color={"red"} boxSize="2em" />
