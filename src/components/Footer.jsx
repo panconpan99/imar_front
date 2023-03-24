@@ -4,7 +4,7 @@ import {Box} from "@chakra-ui/react"
 const Footer = () => {
     return(
         <nav className="footer">
-            <Box bg={"white"} h={"55px"} p={3}>
+            <Box position="fixed" bottom="0" right="0" p={4} bg="gray.100" transform="translate(-50%, -50%)" translateX="100%" translateY="100%">
                 footer
             </Box>
         </nav>
