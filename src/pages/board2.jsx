@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 //eliminar el acordeon (done)
 //hacer mas interactivo el board
 //buscar una manera de elegir un dia y mes (done)
-//hacer que la hora muestre la hora
+//hacer que la hora muestre la hora (uh?)
 //descargas
 const Board2 = () => {
   const unit = "hour";
@@ -34,7 +34,7 @@ const Board2 = () => {
       <Flex p={10} pt={"90px"}>
         <HStack>
           <Box sx={dashstyle} w="500px">
-            <Dash datos={datos} tipo={"Ejemplo"} unit={unit} />
+            <Dash datos={datos} label={"Ejemplo"} unit={unit} type={"line"}/>
           </Box>
           <Box sx={dashstyle} w={"62rem"}>
             <Box>
@@ -53,7 +53,7 @@ const Board2 = () => {
               <Selection/>
             </Box>
 
-            <HStack position={"fixed"} top={"36em"} left={"67em"}>
+            <HStack >
               <Button colorScheme={"green"} variant="solid">
                 Descargar archivo .XLSX
               </Button>

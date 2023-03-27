@@ -2,8 +2,7 @@ import { React, useState } from "react";
 import { Box, Button, HStack, ButtonGroup } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import GetData from "../components/GetData";
-import Historic from "../components/Historic";
-import Actual from "../components/Actual";
+import Hero from "../components/Hero";
 
 //seteo de datos
 const data1 = {data : GetData(),label:"solubilidad del agua"};
@@ -49,8 +48,7 @@ const Board1 = () => {
         </HStack>
       </Box>
       <Box p="5px">
-        {selectedbuttons === "1" && <Actual listdata={alldata}/>}
-        {selectedbuttons === "2" && <Historic listdata={alldata} />}
+        <Hero listdata={alldata}  type ={selectedbuttons} />
       </Box>
       <Box pl={9}>
         <Button p={"20px"} colorScheme="blue" onClick={HandleButtonClick}>

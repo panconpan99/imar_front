@@ -13,7 +13,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Selection = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [StartDate, setStartDate] = useState(new Date());
   const [EndDate, setEndDate] = useState(new Date());
   const [selectedOption, setSelectedOption] = useState(null);
   const [values, setValues] = useState([0, 6]);
@@ -45,8 +45,8 @@ const Selection = () => {
             <RangeSliderTrack>
               <RangeSliderFilledTrack />
             </RangeSliderTrack>
-            <RangeSliderThumb boxSize={6} key={0} index={0} children={values[0]}/>
-            <RangeSliderThumb boxSize={6} key={1} index={1} children={values[1]} />
+            <RangeSliderThumb boxSize={6} key={0} index={0} value={values[0]} children={values[0]} />
+            <RangeSliderThumb boxSize={6} key={1} index={1} value={values[1]} children={values[1]}/>
           </RangeSlider>
         </Box>
       );
@@ -59,9 +59,10 @@ const Selection = () => {
             <Box>
               Fecha inicio
               <DatePicker
-                selected={startDate}
-                onChange={(startDate) => setStartDate(startDate)}
+                selected={StartDate}
+                onChange={(StartDate) => setStartDate(StartDate)}
                 placeholder="inicio"
+                dateFormat="dd/MM/yyyy"
               />
             </Box>
             <Box>
@@ -70,6 +71,7 @@ const Selection = () => {
                 selected={EndDate}
                 onChange={(EndDate) => setEndDate(EndDate)}
                 placeholder="final"
+                dateFormat="dd/MM/yyyy"
               />
             </Box>
           </HStack>
