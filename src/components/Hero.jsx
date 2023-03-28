@@ -13,7 +13,7 @@ import {
   PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { InfoIcon, CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import Dash from "./Dash";
@@ -25,15 +25,15 @@ const Hero = ({ listdata, type }) => {
     Navigate("/board2");
   };
   const dashstyle = {
-    w: "510px",
-    h: "500px",
+    w: "500em",
+    h: "35em",
     boxShadow: "lg",
     rounded: "md",
     p: "15px",
     bg: "#FFFFFF",
   };
   return (
-    <HStack p={"20px"} pt={"30px"}>
+    <HStack p={"1em"}>
       {listdata.map((data) => {
         return (
           <Box key={data.data} sx={dashstyle}>
@@ -49,8 +49,22 @@ const Hero = ({ listdata, type }) => {
                   <PopoverHeader>Información</PopoverHeader>
                   <PopoverCloseButton />
                   <PopoverBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore.
+                    <Text>
+                      {" "}
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore.
+                    </Text>
+                    <Text>
+                      Estado:
+                      {data.data.slice(-1) < 55 ? (
+                        <CheckIcon color={"green"} boxSize="1.5em" />
+                      ) : (
+                        <CloseIcon color={"red"} boxSize="1.5em" />
+                      )}
+                    </Text>
+                    <Text>
+                      Ultimo dato : 2023/03/04 6 AM
+                    </Text>
                   </PopoverBody>
                   <PopoverFooter
                     border="0"
@@ -85,15 +99,7 @@ const Hero = ({ listdata, type }) => {
 
             <VStack>
               <Box pl={"1.5em"}>
-                <Text fontSize='2em'>{data.data.slice(-1)}</Text>
-              </Box>
-              <Box p="1.5em">
-                Estado:
-                {data.data.slice(-1) < 50 ? (
-                  <CheckIcon color={"green"} boxSize="2em" />
-                ) : (
-                  <CloseIcon color={"red"} boxSize="2em" />
-                )}
+                <Text fontSize="2em">{data.data.slice(-1)}</Text>
               </Box>
             </VStack>
           </Box>

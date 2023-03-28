@@ -5,15 +5,15 @@ import GetData from "../components/GetData";
 import Hero from "../components/Hero";
 
 //seteo de datos
-const data1 = {data : GetData(),label:"solubilidad del agua"};
-const data2 ={data : GetData(),label:"marejada"};
-const data3 = {data : GetData(),label:"fosfato"};
-const data4 = {data : GetData(),label:"temperatura"};
+const data1 = { data: GetData(), label: "solubilidad del agua" };
+const data2 = { data: GetData(), label: "marejada" };
+const data3 = { data: GetData(), label: "fosfato" };
+const data4 = { data: GetData(), label: "temperatura" };
 const alldata = [data1, data2, data3, data4];
 
 const Board1 = () => {
   const Navigate = useNavigate();
-  
+
   const [selectedbuttons, setselectedbuttons] = useState("1");
   const HandleButtonClick = () => {
     Navigate("/");
@@ -25,7 +25,7 @@ const Board1 = () => {
   //limites
   return (
     <>
-      <Box pt="5em" pl="2em">
+      <Box pt="5%" pl="2%">
         <HStack>
           <ButtonGroup>
             <Button
@@ -47,11 +47,11 @@ const Board1 = () => {
           </ButtonGroup>
         </HStack>
       </Box>
-      <Box p="5px">
-        <Hero listdata={alldata}  type ={selectedbuttons} />
+      <Box p="1em">
+        <Hero listdata={alldata} type={selectedbuttons} />
       </Box>
-      <Box pl={9}>
-        <Button p={"20px"} colorScheme="blue" onClick={HandleButtonClick}>
+      <Box pl="2.5em">
+        <Button p="1rem" colorScheme="blue" onClick={HandleButtonClick}>
           Volver
         </Button>
       </Box>
