@@ -17,21 +17,18 @@ const Selection = () => {
   const [EndDate, setEndDate] = useState(new Date());
   const [selectedOption, setSelectedOption] = useState(null);
   const [values, setValues] = useState([0, 6]);
+
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
   const statesselector = (selectedOption) => {
-    let page1 = "";
-    let page2 = "";
-    let page3 = "";
     if (
       selectedOption === "today" ||
-      selectedOption === "yesterday" ||
-      selectedOption === "Custom"
+      selectedOption === "yesterday"
     ) {
-      page1 = (
-        <Box pb={"20px"}>
+      return (
+        <Box pb={"15.6em"}>
           Hora:
           <RangeSlider
             defaultValue={[0, 6]}
@@ -45,49 +42,84 @@ const Selection = () => {
             <RangeSliderTrack>
               <RangeSliderFilledTrack />
             </RangeSliderTrack>
-            <RangeSliderThumb boxSize={6} key={0} index={0} value={values[0]} children={values[0]} />
-            <RangeSliderThumb boxSize={6} key={1} index={1} value={values[1]} children={values[1]}/>
+            <RangeSliderThumb
+              boxSize={6}
+              key={0}
+              index={0}
+              value={values[0]}
+              children={values[0]}
+            />
+            <RangeSliderThumb
+              boxSize={6}
+              key={1}
+              index={1}
+              value={values[1]}
+              children={values[1]}
+            />
           </RangeSlider>
         </Box>
       );
-    }
-    if (selectedOption === "Custom") {
-      page2 = (
-        <Box>
-          Fecha:
-          <HStack p="20px" spacing={"5px"}>
-            <Box>
-              Fecha inicio
-              <DatePicker
-                selected={StartDate}
-                onChange={(StartDate) => setStartDate(StartDate)}
-                placeholder="inicio"
-                dateFormat="dd/MM/yyyy"
+    } else if (selectedOption === "Custom") {
+      return (
+        <>
+          <Box pb={"20px"}>
+            Hora:
+            <RangeSlider
+              defaultValue={[0, 6]}
+              min={0}
+              max={24}
+              step={1}
+              values={values}
+              minStepsBetweenThumbs={1}
+              onChange={(newvalue) => setValues(newvalue)}
+            >
+              <RangeSliderTrack>
+                <RangeSliderFilledTrack />
+              </RangeSliderTrack>
+              <RangeSliderThumb
+                boxSize={6}
+                key={0}
+                index={0}
+                value={values[0]}
+                children={values[0]}
               />
-            </Box>
-            <Box>
-              Fecha final
-              <DatePicker
-                selected={EndDate}
-                onChange={(EndDate) => setEndDate(EndDate)}
-                placeholder="final"
-                dateFormat="dd/MM/yyyy"
+              <RangeSliderThumb
+                boxSize={6}
+                key={1}
+                index={1}
+                value={values[1]}
+                children={values[1]}
               />
-            </Box>
-          </HStack>
-        </Box>
+            </RangeSlider>
+          </Box>
+          <Box>
+            Fecha:
+            <HStack p="20px" spacing={"5px"} pb="8.4em">
+              <Box>
+                Fecha inicio
+                <DatePicker
+                  selected={StartDate}
+                  onChange={(date) => setStartDate(date)}
+                  placeholder="inicio"
+                  dateFormat="dd/MM/yyyy"
+                />
+              </Box>
+              <Box>
+                Fecha final
+                <DatePicker
+                  selected={EndDate}
+                  onChange={(date) => setEndDate(date)}
+                  placeholder="final"
+                  dateFormat="dd/MM/yyyy"
+                />
+              </Box>
+            </HStack>
+          </Box>
+        </>
       );
+    } else {
+      return <Box pb={"19em"}></Box>;
     }
-    if (
-      selectedOption === "week" ||
-      selectedOption === "month" ||
-      selectedOption === "year" ||
-      selectedOption === null
-    ) {
-      page3 = <Box pb={"150px"}></Box>;
-    }
-    const page = [page1, page2, page3];
-    return page;
   };
   return (
     <>

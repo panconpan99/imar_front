@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   HStack,
-  VStack,
   Portal,
   Popover,
   PopoverTrigger,
@@ -62,9 +61,7 @@ const Hero = ({ listdata, type }) => {
                         <CloseIcon color={"red"} boxSize="1.5em" />
                       )}
                     </Text>
-                    <Text>
-                      Ultimo dato : 2023/03/04 6 AM
-                    </Text>
+                    <Text>Ultimo dato : 2023/03/04 6 AM</Text>
                   </PopoverBody>
                   <PopoverFooter
                     border="0"
@@ -97,11 +94,10 @@ const Hero = ({ listdata, type }) => {
               />
             )}
 
-            <VStack>
-              <Box pl={"1.5em"}>
-                <Text fontSize="2em">{data.data.slice(-1)}</Text>
-              </Box>
-            </VStack>
+            <HStack pl={"12em"}>
+              <Text fontSize="2em">{data.data.slice(-1)}</Text>
+              <Text fontSize={"1em"}>{data.um}</Text>
+            </HStack>
           </Box>
         );
       })}

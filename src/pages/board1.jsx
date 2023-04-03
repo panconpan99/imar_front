@@ -5,10 +5,10 @@ import GetData from "../components/GetData";
 import Hero from "../components/Hero";
 
 //seteo de datos
-const data1 = { data: GetData(), label: "solubilidad del agua" };
-const data2 = { data: GetData(), label: "marejada" };
-const data3 = { data: GetData(), label: "fosfato" };
-const data4 = { data: GetData(), label: "temperatura" };
+const data1 = { data: GetData(), label: "salinidad del agua" , um: "g/l"};
+const data2 = { data: GetData(), label: "Humedad", um: "%" };
+const data3 = { data: GetData(), label: "fosfato" ,um: "mmol/l"};
+const data4 = { data: GetData(), label: "temperatura" ,um:"°C"};
 const alldata = [data1, data2, data3, data4];
 
 const Board1 = () => {
